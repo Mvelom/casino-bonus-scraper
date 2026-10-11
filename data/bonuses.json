@@ -1,0 +1,34 @@
+{
+  "generated_at": "2026-10-11T00:00:00+00:00",
+  "source": "AskGamblers - Casino Welcome Bonuses",
+  "model": "preview fixture - run scrape.py to refresh",
+  "casinos": [
+    {
+      "casino": "BangaWin Casino",
+      "welcome_bonus": "125% up to €1250 + 300 Free Spins at BangaWin Casino, 1st Deposit",
+      "wagering_multiplier": 30,
+      "min_deposit": "€20",
+      "source_url": "https://www.askgamblers.com/casino-bonuses/welcome",
+      "scraped_at": "2026-10-11T00:00:00+00:00",
+      "needs_review": true
+    },
+    {
+      "casino": "Winoly Casino",
+      "welcome_bonus": "330% up to €1550 + 370 Free Spins at Winoly Casino, Welcome Package",
+      "wagering_multiplier": 30,
+      "min_deposit": "€50",
+      "source_url": "https://www.askgamblers.com/casino-bonuses/welcome",
+      "scraped_at": "2026-10-11T00:00:00+00:00",
+      "needs_review": true
+    },
+    {
+      "casino": "Rokubet Casino",
+      "welcome_bonus": "100% up to €500 + 100 Free Spins at Rokubet Casino, 1st Deposit",
+      "wagering_multiplier": 40,
+      "min_deposit": "€15",
+      "source_url": "https://www.askgamblers.com/casino-bonuses/welcome",
+      "scraped_at": "2026-10-11T00:00:00+00:00",
+      "needs_review": true
+    }
+  ]
+}
