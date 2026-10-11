@@ -3,109 +3,196 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Casino welcome bonuses</title>
+<meta name="theme-color" content="#102d2a">
+<title>Casino bonus snapshot</title>
 <style>
-  :root { --bg:#fff; --fg:#1a1a1a; --muted:#5c6370; --line:#d9dce1; --accent:#0a5c4a; --warn:#9a5b00; }
-  @media (prefers-color-scheme: dark) {
-    :root { --bg:#14171a; --fg:#eceef0; --muted:#9aa3ad; --line:#2b3036; --accent:#6fd3b6; --warn:#e0a84a; }
+  :root {
+    --ink: #132624;
+    --muted: #63716d;
+    --paper: #f6f7f2;
+    --card: #ffffff;
+    --line: #dfe5dd;
+    --pine: #0f3d36;
+    --mint: #b8e6cd;
+    --gold: #ecb95d;
+    --warning: #9b5f09;
+    --shadow: 0 18px 45px rgba(24, 55, 45, .10);
   }
   * { box-sizing: border-box; }
-  body { margin:0; background:var(--bg); color:var(--fg);
-         font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
-  main { max-width:56rem; margin:0 auto; padding:1.5rem 1rem 3rem; }
-  h1 { font-size:1.5rem; margin:0 0 .25rem; }
-  .meta { color:var(--muted); font-size:.9rem; margin:0 0 1.5rem; }
-  table { width:100%; border-collapse:collapse; }
-  th, td { text-align:left; padding:.75rem .5rem; border-bottom:1px solid var(--line); vertical-align:top; }
-  th { font-size:.85rem; color:var(--muted); font-weight:600; }
-  a { color:var(--accent); }
-  .na { color:var(--muted); }
-  .review { color:var(--warn); font-size:.85rem; display:block; }
-  #status { color:var(--muted); }
-  @media (max-width: 640px) {
-    thead { position:absolute; left:-9999px; }
-    tr { display:block; padding:.75rem 0; border-bottom:1px solid var(--line); }
-    td { display:flex; justify-content:space-between; gap:1rem; border:0; padding:.25rem 0; }
-    td::before { content:attr(data-label); color:var(--muted); flex:0 0 40%; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    background: var(--paper);
+    font: 16px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  .hero {
+    color: #fff;
+    background: radial-gradient(circle at 80% -10%, #2d7766 0, transparent 37%), var(--pine);
+    overflow: hidden;
+  }
+  .wrap { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
+  .hero-inner { padding: 1.1rem 0 3.7rem; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    margin: 0 0 2rem;
+    color: #d5eee1;
+    font-size: .77rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .dot { width: .55rem; height: .55rem; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 4px rgba(184,230,205,.15); }
+  h1 { max-width: 760px; margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.25rem, 6vw, 4.75rem); font-weight: 500; line-height: .98; letter-spacing: -.045em; }
+  .lede { max-width: 590px; margin: 1.25rem 0 0; color: #d8e8e1; font-size: clamp(1rem, 2vw, 1.17rem); }
+  main { position: relative; margin-top: -1.65rem; padding-bottom: 4rem; }
+  .summary {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    min-height: 74px;
+    padding: 1rem 1.25rem;
+    background: var(--card);
+    border: 1px solid rgba(19,38,36,.06);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+  }
+  .summary strong { display: block; font-size: .92rem; }
+  .summary span { color: var(--muted); font-size: .86rem; }
+  .pill { padding: .35rem .68rem; color: #174f3e; background: #e1f3e8; border-radius: 999px; font-size: .78rem; font-weight: 700; white-space: nowrap; }
+  .panel { margin-top: 1.4rem; }
+  #status { padding: 1.5rem; color: var(--muted); text-align: center; }
+  table { width: 100%; border-spacing: 0; border-collapse: separate; }
+  thead th { padding: .7rem 1rem; color: var(--muted); border-bottom: 1px solid var(--line); font-size: .73rem; font-weight: 750; letter-spacing: .08em; text-align: left; text-transform: uppercase; }
+  tbody tr { background: var(--card); transition: transform .2s ease, box-shadow .2s ease; }
+  tbody tr:hover { position: relative; z-index: 1; box-shadow: 0 8px 25px rgba(19,38,36,.08); transform: scale(1.008); }
+  tbody td { padding: 1.15rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tbody tr:first-child td:first-child { border-top-left-radius: 12px; }
+  tbody tr:first-child td:last-child { border-top-right-radius: 12px; }
+  tbody tr:last-child td:first-child { border-bottom-left-radius: 12px; }
+  tbody tr:last-child td:last-child { border-bottom-right-radius: 12px; }
+  .casino { display: block; font-weight: 750; }
+  .review { display: inline-flex; margin-top: .42rem; padding: .18rem .42rem; color: var(--warning); background: #fff3d9; border-radius: 4px; font-size: .7rem; font-weight: 700; letter-spacing: .02em; }
+  .offer { max-width: 315px; font-weight: 650; line-height: 1.35; }
+  .stat { font-variant-numeric: tabular-nums; font-weight: 750; }
+  .stat small { display: block; margin-top: .15rem; color: var(--muted); font-size: .75rem; font-weight: 500; }
+  a { color: #12604d; font-weight: 700; text-decoration-color: #8fc8b2; text-underline-offset: 3px; }
+  a:hover { color: #073e31; }
+  .na { color: var(--muted); font-weight: 500; }
+  .note { max-width: 760px; margin: 1.35rem auto 0; color: var(--muted); font-size: .8rem; text-align: center; }
+  @media (max-width: 700px) {
+    .wrap { width: min(100% - 1.25rem, 1120px); }
+    .hero-inner { padding-bottom: 3.1rem; }
+    .eyebrow { margin-bottom: 1.55rem; }
+    .summary { align-items: flex-start; padding: .85rem 1rem; }
+    .pill { font-size: .7rem; }
+    thead { position: absolute; clip: rect(0 0 0 0); width: 1px; height: 1px; overflow: hidden; white-space: nowrap; }
+    table, tbody, tr, td { display: block; }
+    tbody { display: grid; gap: .8rem; }
+    tbody tr { overflow: hidden; border: 1px solid var(--line); border-radius: 13px; box-shadow: 0 3px 10px rgba(19,38,36,.035); }
+    tbody tr:hover { transform: none; }
+    tbody td { display: grid; grid-template-columns: 7.4rem 1fr; gap: .8rem; padding: .68rem .9rem; border: 0; }
+    tbody td:first-child { padding-top: 1rem; }
+    tbody td:last-child { padding-bottom: 1rem; }
+    tbody td::before { content: attr(data-label); color: var(--muted); font-size: .71rem; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; }
+    tbody tr td:first-child, tbody tr td:last-child { border-radius: 0; }
+    .casino, .offer { max-width: none; }
+    .review { width: max-content; }
   }
 </style>
 </head>
 <body>
-<main>
-  <h1>Casino welcome bonuses</h1>
-  <p class="meta" id="meta"></p>
-  <p id="status">Loading…</p>
-  <table id="table" hidden>
-    <thead>
-      <tr><th>Casino</th><th>Welcome bonus</th><th>Wagering</th><th>Min. deposit</th><th>Source</th></tr>
-    </thead>
-    <tbody id="rows"></tbody>
-  </table>
+<header class="hero">
+  <div class="wrap hero-inner">
+    <p class="eyebrow"><span class="dot"></span> Bonus tracker</p>
+    <h1>Welcome offers,<br>made comparable.</h1>
+    <p class="lede">A compact snapshot of welcome-bonus terms from one public source. Always confirm the offer directly before making a deposit.</p>
+  </div>
+</header>
+<main class="wrap">
+  <section class="summary" aria-live="polite">
+    <div><strong id="summary-title">Current offers</strong><span id="meta">Loading latest data…</span></div>
+    <span class="pill" id="count">Snapshot</span>
+  </section>
+  <section class="panel" aria-label="Casino welcome bonuses">
+    <p id="status">Loading offers…</p>
+    <table id="table" hidden>
+      <thead><tr><th>Casino</th><th>Welcome bonus</th><th>Wagering</th><th>Minimum deposit</th><th>Source</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </section>
+  <p class="note">Offers and availability can change by country, payment method and time. This page is informational only and not gambling advice.</p>
 </main>
 <script>
   const NA = "Not stated";
+  const $ = (id) => document.getElementById(id);
 
-  function cell(label, content, isNa) {
+  function cell(label, content, isNa = false) {
     const td = document.createElement("td");
     td.dataset.label = label;
-    if (content instanceof Node) td.appendChild(content);
-    else td.textContent = content;
+    if (content instanceof Node) td.appendChild(content); else td.textContent = content;
     if (isNa) td.classList.add("na");
     return td;
   }
 
   function render(data) {
-    const rows = document.getElementById("rows");
     const list = data.casinos || [];
     if (!list.length) {
-      document.getElementById("status").textContent =
-        "No data yet. Run the scraper to generate data/bonuses.json.";
+      $("status").textContent = "No offers available yet. Run the scraper to generate data/bonuses.json.";
       return;
     }
+    const rows = $("rows");
     for (const c of list) {
       const tr = document.createElement("tr");
-
-      const name = document.createElement("span");
-      name.textContent = c.casino;
+      const name = document.createElement("div");
+      const casino = document.createElement("span");
+      casino.className = "casino";
+      casino.textContent = c.casino;
+      name.appendChild(casino);
       if (c.needs_review) {
         const flag = document.createElement("span");
         flag.className = "review";
-        flag.textContent = "Unverified: check at source";
+        flag.textContent = "Check source";
         name.appendChild(flag);
       }
-      tr.appendChild(cell("Casino", name));
-      tr.appendChild(cell("Welcome bonus", c.welcome_bonus ?? NA, c.welcome_bonus == null));
-      tr.appendChild(cell("Wagering",
-        c.wagering_multiplier == null ? NA : c.wagering_multiplier + "x", c.wagering_multiplier == null));
-      tr.appendChild(cell("Min. deposit", c.min_deposit ?? NA, c.min_deposit == null));
-
+      const offer = document.createElement("div");
+      offer.className = "offer";
+      offer.textContent = c.welcome_bonus ?? NA;
+      const wagering = document.createElement("span");
+      wagering.className = "stat";
+      wagering.textContent = c.wagering_multiplier == null ? NA : `${c.wagering_multiplier}×`;
+      const deposit = document.createElement("span");
+      deposit.className = "stat";
+      deposit.textContent = c.min_deposit ?? NA;
+      tr.append(cell("Casino", name));
+      tr.append(cell("Welcome bonus", offer, c.welcome_bonus == null));
+      tr.append(cell("Wagering", wagering, c.wagering_multiplier == null));
+      tr.append(cell("Min. deposit", deposit, c.min_deposit == null));
       if (/^https?:\/\//.test(c.source_url || "")) {
-        const a = document.createElement("a");
-        a.href = c.source_url;
-        a.textContent = new URL(c.source_url).hostname;
-        a.rel = "noopener noreferrer";
-        a.target = "_blank";
-        tr.appendChild(cell("Source", a));
+        const link = document.createElement("a");
+        link.href = c.source_url;
+        link.textContent = "View source";
+        link.rel = "noopener noreferrer";
+        link.target = "_blank";
+        tr.append(cell("Source", link));
       } else {
-        tr.appendChild(cell("Source", NA, true));
+        tr.append(cell("Source", NA, true));
       }
       rows.appendChild(tr);
     }
-    if (data.generated_at) {
-      document.getElementById("meta").textContent =
-        "Last updated " + new Date(data.generated_at).toLocaleString();
-    }
-    document.getElementById("status").hidden = true;
-    document.getElementById("table").hidden = false;
+    $("summary-title").textContent = `${list.length} current welcome offers`;
+    $("count").textContent = `${list.length} casinos`;
+    if (data.generated_at) $("meta").textContent = `Updated ${new Date(data.generated_at).toLocaleDateString(undefined, { day: "numeric", month: "long", year: "numeric" })}`;
+    $("status").hidden = true;
+    $("table").hidden = false;
   }
 
   fetch("data/bonuses.json", { cache: "no-store" })
-    .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then((response) => { if (!response.ok) throw new Error(response.status); return response.json(); })
     .then(render)
-    .catch(() => {
-      document.getElementById("status").textContent =
-        "Could not load data/bonuses.json. If you opened this file directly, serve it over http: python -m http.server";
-    });
+    .catch(() => { $("status").textContent = "Could not load the bonus data. Please try again shortly."; });
 </script>
 </body>
 </html>
