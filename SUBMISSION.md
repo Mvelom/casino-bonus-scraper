@@ -5,7 +5,7 @@
 Publish this repository with GitHub Pages (see `README.md`) and paste the live
 URL here before sending the task:
 
-`[add GitHub Pages URL]`
+https://mvelom.github.io/casino-bonus-scraper/
 
 ## Written part: production plan for 200 casinos, updated daily
 
